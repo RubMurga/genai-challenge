@@ -23,9 +23,14 @@ export default function Home() {
             </div>
             <span className="text-xl font-bold">AI Lab</span>
           </div>
-          <Button variant="outline" size="sm">
-            Get Started
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/sign-in">Sign In</Link>
+            </Button>
+            <Button size="sm" asChild>
+              <Link href="/sign-up">Get Started</Link>
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -43,8 +48,8 @@ export default function Home() {
             settings, and discover the perfect AI responses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
-              Start Experimenting
+            <Button size="lg" className="text-lg px-8 py-6" asChild>
+              <Link href="/sign-up">Start Experimenting</Link>
             </Button>
             <Button
               variant="outline"
@@ -257,8 +262,8 @@ export default function Home() {
                 today. Join thousands of users experimenting with AI parameters.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Get Started
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link href="/sign-up">Get Started</Link>
                 </Button>
               </div>
             </CardContent>

@@ -9,4 +9,4 @@ const pool = new Pool({
 
 const db = drizzle(pool, { schema, casing: "snake_case" })
 
-export default db
+export { db }

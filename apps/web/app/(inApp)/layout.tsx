@@ -4,21 +4,16 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import AppSidebar from "./sideBar"
+import { getServerSession } from "@/lib/auth-server"
 
-export default function InAppLayout({
+export default async function InAppLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // Mock session data for now
-  const session = {
-    user: {
-      name: "John Doe",
-      email: "john@example.com",
-    },
-  }
+  const session = await getServerSession()
 
   return (
     <SidebarProvider>
@@ -30,9 +25,11 @@ export default function InAppLayout({
           <div className="flex-1" />
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <p className="text-sm font-medium">{session?.user?.name}</p>
+              <p className="text-sm font-medium">
+                {session?.user?.name || "User"}
+              </p>
               <p className="text-xs text-muted-foreground">
-                {session?.user?.email}
+                {session?.user?.email || "user@example.com"}
               </p>
             </div>
             <Avatar className="w-8 h-8">

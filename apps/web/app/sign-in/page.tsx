@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9,8 +10,27 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
-
+import { authClient } from "@/lib/auth"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 export default function SignIn() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const router = useRouter()
+  const handleSignIn = async () => {
+    const { error } = await authClient.signIn.email({
+      email,
+      password,
+    })
+    if (error) {
+      toast.error(error.message)
+    } else {
+      toast.success("Signed in successfully")
+      router.push("/questions")
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -46,6 +66,8 @@ export default function SignIn() {
                 type="email"
                 placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -56,10 +78,12 @@ export default function SignIn() {
                 type="password"
                 placeholder="Enter your password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="lg" onClick={handleSignIn}>
               Sign In
             </Button>
 

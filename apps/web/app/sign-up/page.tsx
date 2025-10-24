@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -8,9 +9,31 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { authClient } from "@/lib/auth"
 import Link from "next/link"
-
+import { useState } from "react"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 export default function SignUp() {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const router = useRouter()
+  const handleSignUp = async () => {
+    const { error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+    })
+    if (error) {
+      toast.error(error.message)
+    } else {
+      toast.success("Account created successfully")
+      router.push("/sign-in")
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -46,6 +69,8 @@ export default function SignUp() {
                 type="text"
                 placeholder="Enter your full name"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
 
@@ -56,6 +81,8 @@ export default function SignUp() {
                 type="email"
                 placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -66,6 +93,8 @@ export default function SignUp() {
                 type="password"
                 placeholder="Create a password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -76,10 +105,12 @@ export default function SignUp() {
                 type="password"
                 placeholder="Confirm your password"
                 required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
 
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="lg" onClick={handleSignUp}>
               Create Account
             </Button>
 

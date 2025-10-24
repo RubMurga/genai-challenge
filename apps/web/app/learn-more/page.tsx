@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -7,9 +9,11 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Footer } from "@/components/footer"
 
 export default function LearnMore() {
+  const router = useRouter()
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Navigation */}
@@ -23,8 +27,8 @@ export default function LearnMore() {
             </div>
             <span className="text-xl font-bold">AI Lab</span>
           </Link>
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/">Back to Home</Link>
+          <Button variant="outline" size="sm" onClick={() => router.back()}>
+            Back
           </Button>
         </div>
       </nav>

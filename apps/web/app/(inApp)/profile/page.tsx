@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Calendar, Mail, Shield, User } from "lucide-react"
+import { LogoutButton } from "./logout-button"
 
 export default async function Profile() {
   const session = await getServerSession()
@@ -176,6 +177,16 @@ export default async function Profile() {
               </div>
             </div>
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Account Actions</CardTitle>
+          <CardDescription>Manage your account and session</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <LogoutButton />
         </CardContent>
       </Card>
     </div>

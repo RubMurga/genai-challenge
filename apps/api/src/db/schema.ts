@@ -60,7 +60,7 @@ export const verification = pgTable("verification", {
     .notNull(),
 })
 
-export const message = pgTable("message", {
+export const question = pgTable("question", {
   id: uuid("id").primaryKey().defaultRandom(),
   content: text("content").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),

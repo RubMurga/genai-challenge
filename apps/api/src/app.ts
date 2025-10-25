@@ -1,6 +1,6 @@
 import { Hono } from "hono"
 import { auth } from "@/lib/auth"
-import { messageRouter } from "./routes/message.router"
+import { questionRouter } from "./routes/question.router"
 import { cors } from "hono/cors"
 const app = new Hono()
 
@@ -19,7 +19,7 @@ const app = new Hono()
   )
 
   .on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
-  .route("/api/messages", messageRouter)
+  .route("/api/questions", questionRouter)
   .get("/", (c) => {
     return c.text("All Systems operational.")
   })

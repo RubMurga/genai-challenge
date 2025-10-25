@@ -23,3 +23,10 @@ export async function getServerSession() {
     return null
   }
 }
+
+export async function getServerCookieHeaders() {
+  const headersList = await headers()
+  return {
+    cookie: headersList.get("cookie") || "",
+  }
+}

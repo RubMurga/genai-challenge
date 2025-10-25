@@ -7,6 +7,7 @@ import {
   EmptyDescription,
 } from "@/components/ui/empty"
 import { MessageCircle, Calendar } from "lucide-react"
+import { QuestionFormSheet } from "@/app/(inApp)/questions/question-form-sheet"
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -30,6 +31,7 @@ export default async function Questions() {
             Ask questions and track your learning journey
           </p>
         </div>
+        <QuestionFormSheet />
       </div>
 
       {/* Questions List */}

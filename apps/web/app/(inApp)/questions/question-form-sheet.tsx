@@ -16,22 +16,34 @@ import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { Plus } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { createQuestionAction } from "./actions"
+import { toast } from "sonner"
 
 export function QuestionFormSheet() {
   const [content, setContent] = useState("")
   const [temperature, setTemperature] = useState([0.7])
   const [topT, setTopT] = useState("")
   const [open, setOpen] = useState(false)
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement form submission functionality
-    console.log("Form submitted:", {
-      content,
-      temperature: temperature[0],
-      topT,
-    })
-    // Close the sheet after successful submission
+    if (!content.trim()) return
+
+    setIsSubmitting(true)
+
+    const formData = new FormData()
+    formData.append("content", content.trim())
+
+    await createQuestionAction({ errors: {}, success: false }, formData)
+    toast.success("Question created successfully!")
+
+    // Reset form and close sheet
+    setContent("")
+    setTemperature([0.7])
+    setTopT("")
     setOpen(false)
+    setIsSubmitting(false)
   }
 
   const handleCancel = () => {
@@ -73,6 +85,7 @@ export function QuestionFormSheet() {
                 onChange={(e) => setContent(e.target.value)}
                 className="min-h-[120px] resize-none"
                 required
+                disabled={isSubmitting}
               />
               <p className="text-xs text-muted-foreground">
                 Be specific and include context to get better answers.
@@ -90,6 +103,7 @@ export function QuestionFormSheet() {
                 max={2}
                 step={0.1}
                 className="w-full"
+                disabled={isSubmitting}
               />
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">
@@ -124,6 +138,7 @@ export function QuestionFormSheet() {
                 min="0"
                 max="1"
                 step="0.01"
+                disabled={isSubmitting}
               />
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">
@@ -165,11 +180,16 @@ export function QuestionFormSheet() {
 
             {/* Submit Button */}
             <div className="flex justify-end space-x-2 pt-4">
-              <Button type="button" variant="outline" onClick={handleCancel}>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCancel}
+                disabled={isSubmitting}
+              >
                 Cancel
               </Button>
-              <Button type="submit" disabled={!content.trim()}>
-                Create Question
+              <Button type="submit" disabled={!content.trim() || isSubmitting}>
+                {isSubmitting ? "Creating..." : "Create Question"}
               </Button>
             </div>
           </form>

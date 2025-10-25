@@ -11,6 +11,7 @@ const createAuthenticatedClient = async () => {
       credentials: "include",
       headers: {
         cookie: headers.cookie,
+        "Content-Type": "application/json",
       },
     },
   })
@@ -22,7 +23,7 @@ export const getQuestions = async () => {
   return response.json()
 }
 
-export const createMessage = async (content: string) => {
+export const createQuestion = async (content: string) => {
   const client = await createAuthenticatedClient()
   const response = await client.api.questions.$post({
     json: { content },

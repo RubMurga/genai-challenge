@@ -5,21 +5,23 @@ import { createMessage, getMessages } from "@/queries/message.queries"
 import { HonoEnv } from "@/types/global"
 const messageRouter = new Hono<HonoEnv>()
 
-messageRouter.use(authMiddleware)
+  .use(authMiddleware)
 
-/* Get user messages */
-messageRouter.get("/", async (c) => {
-  const userId = c.get("user").id
-  const messages = await getMessages(userId)
-  return c.json(messages)
-})
+  /* Get user messages */
+  .get("/", async (c) => {
+    const userId = c.get("user").id
+    const messages = await getMessages(userId)
+    return c.json(messages)
+  })
 
-/* Create a new message */
-messageRouter.post("/", createMessageValidator, async (c) => {
-  const { content } = c.req.valid("json")
-  const userId = c.get("user").id
-  const message = await createMessage(content, userId)
-  return c.json(message)
-})
+  /* Create a new message */
+  .post("/", createMessageValidator, async (c) => {
+    const { content } = c.req.valid("json")
+    const userId = c.get("user").id
+    const message = await createMessage(content, userId)
+    return c.json(message)
+  })
+
+type MessageRouterType = typeof messageRouter
 
 export { messageRouter }

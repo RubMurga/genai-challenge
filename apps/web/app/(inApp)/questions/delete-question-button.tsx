@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
 import { deleteQuestionAction } from "./actions"
 import { toast } from "sonner"
+import { Spinner } from "@/components/ui/spinner"
 
 interface DeleteQuestionButtonProps {
   questionId: string
@@ -47,7 +48,7 @@ export function DeleteQuestionButton({
       className="hover:text-destructive text-red-600"
     >
       <Trash2 className="w-4 h-4" />
-      {isPending && <span className="ml-1 text-xs">Deleting...</span>}
+      {isPending ? <Spinner /> : "Delete Question"}
     </Button>
   )
 }

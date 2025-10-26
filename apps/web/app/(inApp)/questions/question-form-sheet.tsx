@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -26,7 +27,7 @@ export function QuestionFormSheet() {
   const [topT, setTopT] = useState("")
   const [open, setOpen] = useState(false)
 
-  const [state, action] = useActionState(createQuestionAction, {
+  const [state, action, isPending] = useActionState(createQuestionAction, {
     errors: {},
     success: false,
   })
@@ -41,8 +42,13 @@ export function QuestionFormSheet() {
         setTopT("")
         setOpen(false)
       })
+      // Reset the success state by calling action with empty form data
+      const emptyFormData = new FormData()
+      startTransition(() => {
+        action(emptyFormData)
+      })
     }
-  }, [state.success])
+  }, [state.success, action])
 
   const handleCancel = () => {
     // Reset form fields
@@ -184,7 +190,7 @@ export function QuestionFormSheet() {
                 Cancel
               </Button>
               <Button type="submit" disabled={!content.trim()}>
-                Create Question
+                {isPending ? <Spinner /> : "Create Question"}
               </Button>
             </div>
           </form>

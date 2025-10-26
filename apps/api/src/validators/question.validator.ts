@@ -1,15 +1,15 @@
 import { z } from "zod"
 import { zValidator } from "@hono/zod-validator"
 
-const createMessageSchema = z
+const createQuestionSchema = z
   .object({
     content: z.string().min(1, "Content is required"),
   })
   .strict() // Ensure that if any extra fields are provided, an error is thrown
 
-export const createMessageValidator = zValidator(
+export const createQuestionValidator = zValidator(
   "json",
-  createMessageSchema,
+  createQuestionSchema,
   (result, c) => {
     if (!result.success) {
       return c.json(

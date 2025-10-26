@@ -5,8 +5,11 @@ import {
   getQuestions,
   createQuestion,
   deleteQuestion,
+  getQuestionWithAnswers,
 } from "@/queries/question.queries"
 import { HonoEnv } from "@/types/global"
+import { answerQuestion } from "@/clients/openai.client"
+import { createAnswer } from "@/queries/answer.queries"
 const questionRouter = new Hono<HonoEnv>()
 
   .use(authMiddleware)
@@ -19,10 +22,13 @@ const questionRouter = new Hono<HonoEnv>()
 
   /* Create a new message */
   .post("/", createQuestionValidator, async (c) => {
-    const { content } = c.req.valid("json")
+    const { content, temperature, topP } = c.req.valid("json")
     const userId = c.get("user").id
     const question = await createQuestion(content, userId)
-    return c.json(question)
+    const answer = await answerQuestion(content, temperature, topP)
+    await createAnswer(answer!, temperature, topP, question.id)
+    const questionWithAnswers = await getQuestionWithAnswers(question.id)
+    return c.json(questionWithAnswers)
   })
 
   .delete("/:id", async (c) => {

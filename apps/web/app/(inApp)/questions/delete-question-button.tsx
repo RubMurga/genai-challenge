@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, startTransition } from "react"
 import { useActionState } from "react"
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
@@ -33,7 +33,9 @@ export function DeleteQuestionButton({
 
     const formData = new FormData()
     formData.append("id", questionId)
-    action(formData)
+    startTransition(() => {
+      action(formData)
+    })
   }
 
   return (

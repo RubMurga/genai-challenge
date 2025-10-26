@@ -73,6 +73,10 @@ export function QuestionFormSheet() {
 
         <ScrollArea className="h-[calc(100vh-200px)]">
           <form action={action} className="px-4 space-y-4">
+            {/* Hidden inputs for form data */}
+            <input type="hidden" name="temperature" value={temperature[0]} />
+            <input type="hidden" name="topT" value={topT} />
+
             {/* Content Field */}
             <div className="space-y-2">
               <Label htmlFor="content">Question Content *</Label>

@@ -1,6 +1,6 @@
 "use server"
 
-import { createQuestion } from "@/lib/api"
+import { createQuestion, deleteQuestion } from "@/lib/api"
 import { revalidatePath } from "next/cache"
 
 export const createQuestionAction = async (
@@ -8,7 +8,17 @@ export const createQuestionAction = async (
   formData: FormData
 ) => {
   const content = formData.get("content") as string
-  const createdQuestion = await createQuestion(content)
+  await createQuestion(content)
   revalidatePath("/questions")
-  return { success: true }
+  return { errors: {} as Record<string, string[]>, success: true }
+}
+
+export const deleteQuestionAction = async (
+  _prevState: { errors: Record<string, string[]>; success: boolean },
+  formData: FormData
+) => {
+  const id = formData.get("id") as string
+  await deleteQuestion(id)
+  revalidatePath("/questions")
+  return { errors: {} as Record<string, string[]>, success: true }
 }

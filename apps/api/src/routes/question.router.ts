@@ -1,7 +1,11 @@
 import { Hono } from "hono"
 import { authMiddleware } from "@/middlewares/auth.middleware"
 import { createQuestionValidator } from "@/validators/question.validator"
-import { getQuestions, createQuestion } from "@/queries/question.queries"
+import {
+  getQuestions,
+  createQuestion,
+  deleteQuestion,
+} from "@/queries/question.queries"
 import { HonoEnv } from "@/types/global"
 const questionRouter = new Hono<HonoEnv>()
 
@@ -19,6 +23,13 @@ const questionRouter = new Hono<HonoEnv>()
     const userId = c.get("user").id
     const question = await createQuestion(content, userId)
     return c.json(question)
+  })
+
+  .delete("/:id", async (c) => {
+    const { id } = c.req.param()
+    const userId = c.get("user").id
+    const deletedQuestion = await deleteQuestion(id, userId)
+    return c.json(deletedQuestion)
   })
 
 export { questionRouter }

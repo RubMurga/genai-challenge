@@ -30,3 +30,11 @@ export const createQuestion = async (content: string) => {
   })
   return response.json()
 }
+
+export const deleteQuestion = async (id: string) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].$delete({
+    param: { id },
+  })
+  return response.json()
+}

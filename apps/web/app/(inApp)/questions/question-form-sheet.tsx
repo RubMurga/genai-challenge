@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, startTransition } from "react"
+import { useActionState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -24,27 +25,24 @@ export function QuestionFormSheet() {
   const [temperature, setTemperature] = useState([0.7])
   const [topT, setTopT] = useState("")
   const [open, setOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!content.trim()) return
+  const [state, action] = useActionState(createQuestionAction, {
+    errors: {},
+    success: false,
+  })
 
-    setIsSubmitting(true)
-
-    const formData = new FormData()
-    formData.append("content", content.trim())
-
-    await createQuestionAction({ errors: {}, success: false }, formData)
-    toast.success("Question created successfully!")
-
-    // Reset form and close sheet
-    setContent("")
-    setTemperature([0.7])
-    setTopT("")
-    setOpen(false)
-    setIsSubmitting(false)
-  }
+  // Handle success state
+  useEffect(() => {
+    if (state.success) {
+      toast.success("Question created successfully!")
+      startTransition(() => {
+        setContent("")
+        setTemperature([0.7])
+        setTopT("")
+        setOpen(false)
+      })
+    }
+  }, [state.success])
 
   const handleCancel = () => {
     // Reset form fields
@@ -74,18 +72,18 @@ export function QuestionFormSheet() {
         </SheetHeader>
 
         <ScrollArea className="h-[calc(100vh-200px)]">
-          <form onSubmit={handleSubmit} className="px-4 space-y-4">
+          <form action={action} className="px-4 space-y-4">
             {/* Content Field */}
             <div className="space-y-2">
               <Label htmlFor="content">Question Content *</Label>
               <Textarea
                 id="content"
+                name="content"
                 placeholder="What would you like to know? Ask your question here..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 className="min-h-[120px] resize-none"
                 required
-                disabled={isSubmitting}
               />
               <p className="text-xs text-muted-foreground">
                 Be specific and include context to get better answers.
@@ -103,7 +101,6 @@ export function QuestionFormSheet() {
                 max={2}
                 step={0.1}
                 className="w-full"
-                disabled={isSubmitting}
               />
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">
@@ -138,7 +135,6 @@ export function QuestionFormSheet() {
                 min="0"
                 max="1"
                 step="0.01"
-                disabled={isSubmitting}
               />
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">
@@ -180,16 +176,11 @@ export function QuestionFormSheet() {
 
             {/* Submit Button */}
             <div className="flex justify-end space-x-2 pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleCancel}
-                disabled={isSubmitting}
-              >
+              <Button type="button" variant="outline" onClick={handleCancel}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={!content.trim() || isSubmitting}>
-                {isSubmitting ? "Creating..." : "Create Question"}
+              <Button type="submit" disabled={!content.trim()}>
+                Create Question
               </Button>
             </div>
           </form>

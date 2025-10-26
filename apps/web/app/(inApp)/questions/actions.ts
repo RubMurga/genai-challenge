@@ -9,6 +9,10 @@ export const createQuestionAction = async (
 ) => {
   const content = formData.get("content") as string
 
+  if (!content) {
+    return { errors: { content: ["Content is required"] }, success: false }
+  }
+
   await createQuestion(content)
   revalidatePath("/questions")
   return { errors: {} as Record<string, string[]>, success: true }

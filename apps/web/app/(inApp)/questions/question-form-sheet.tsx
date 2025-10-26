@@ -40,12 +40,9 @@ export function QuestionFormSheet() {
         setContent("")
         setTemperature([0.7])
         setTopT("")
-        setOpen(false)
-      })
-      // Reset the success state by calling action with empty form data
-      const emptyFormData = new FormData()
-      startTransition(() => {
+        const emptyFormData = new FormData()
         action(emptyFormData)
+        setOpen(false)
       })
     }
   }, [state.success, action])

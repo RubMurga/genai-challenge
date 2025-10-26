@@ -1,4 +1,11 @@
-import { pgTable, text, timestamp, boolean, uuid } from "drizzle-orm/pg-core"
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  uuid,
+  numeric,
+} from "drizzle-orm/pg-core"
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -71,4 +78,19 @@ export const question = pgTable("question", {
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
+})
+
+export const answer = pgTable("answer", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  content: text("content").notNull(),
+  temperature: numeric("temperature").notNull(),
+  topP: numeric("top_p").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => /* @__PURE__ */ new Date())
+    .notNull(),
+  questionId: uuid("question_id")
+    .notNull()
+    .references(() => question.id, { onDelete: "cascade" }),
 })

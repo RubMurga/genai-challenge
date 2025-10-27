@@ -23,10 +23,14 @@ export const getQuestions = async () => {
   return response.json()
 }
 
-export const createQuestion = async (content: string) => {
+export const createQuestion = async (
+  content: string,
+  temperature: number,
+  topP: number
+) => {
   const client = await createAuthenticatedClient()
   const response = await client.api.questions.$post({
-    json: { content },
+    json: { content, temperature, topP },
   })
   return response.json()
 }
@@ -35,6 +39,35 @@ export const deleteQuestion = async (id: string) => {
   const client = await createAuthenticatedClient()
   const response = await client.api.questions[":id"].$delete({
     param: { id },
+  })
+  return response.json()
+}
+
+export const getQuestionWithAnswers = async (id: string) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].$get({
+    param: { id },
+  })
+  return response.json()
+}
+
+export const requestAnswer = async (
+  questionId: string,
+  temperature: number,
+  topP: number
+) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].answers.$post({
+    param: { id: questionId },
+    json: { temperature, topP },
+  })
+  return response.json()
+}
+
+export const explainAnswers = async (questionId: string) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].answers.explain.$post({
+    param: { id: questionId },
   })
   return response.json()
 }

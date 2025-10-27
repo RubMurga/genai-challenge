@@ -1,4 +1,4 @@
-import { question } from "@/db/schema"
+import { answer, question } from "@/db/schema"
 import { db } from "@/db"
 import { and, eq } from "drizzle-orm"
 
@@ -7,7 +7,7 @@ export const createQuestion = async (content: string, userId: string) => {
     .insert(question)
     .values({ content, userId })
     .returning()
-  return newQuestion
+  return newQuestion[0]
 }
 
 export const getQuestions = async (userId: string) => {
@@ -24,4 +24,22 @@ export const deleteQuestion = async (id: string, userId: string) => {
     .where(and(eq(question.id, id), eq(question.userId, userId)))
     .returning()
   return deletedQuestion
+}
+
+export const getQuestionWithAnswers = async (id: string, userId: string) => {
+  const questionWithAnswers = await db
+    .select()
+    .from(question)
+    .leftJoin(answer, eq(question.id, answer.questionId))
+    .where(and(eq(question.id, id), eq(question.userId, userId)))
+  return questionWithAnswers
+}
+
+export const updateQuestionAnalysis = async (id: string, analysis: string) => {
+  const updatedQuestion = await db
+    .update(question)
+    .set({ analysis })
+    .where(eq(question.id, id))
+    .returning()
+  return updatedQuestion[0]
 }

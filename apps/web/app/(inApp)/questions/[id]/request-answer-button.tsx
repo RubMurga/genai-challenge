@@ -37,17 +37,13 @@ export function RequestAnswerButton({ questionId }: RequestAnswerButtonProps) {
   useEffect(() => {
     if (state.success) {
       toast.success("Answer generated successfully!")
-      setTemperature([0.7])
-      setTopT("")
-      setOpen(false)
-
-      // Reset the action state
-      setTimeout(() => {
-        startTransition(() => {
-          const resetFormData = new FormData()
-          action(resetFormData)
-        })
-      }, 100)
+      startTransition(() => {
+        setTemperature([0.7])
+        setTopT("")
+        setOpen(false)
+        const resetFormData = new FormData()
+        action(resetFormData)
+      })
     }
   }, [state.success, action])
 

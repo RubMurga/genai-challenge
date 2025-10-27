@@ -1,6 +1,9 @@
 import { Hono } from "hono"
 import { authMiddleware } from "@/middlewares/auth.middleware"
-import { createQuestionValidator } from "@/validators/question.validator"
+import {
+  createQuestionValidator,
+  generateAnswerValidator,
+} from "@/validators/question.validator"
 import {
   getQuestions,
   createQuestion,
@@ -43,10 +46,10 @@ const questionRouter = new Hono<HonoEnv>()
   })
 
   /* Generate answer for question */
-  .post("/:id/answers", async (c) => {
+  .post("/:id/answers", generateAnswerValidator, async (c) => {
     const { id } = c.req.param()
     const userId = c.get("user").id
-    const { temperature, topP } = await c.req.json()
+    const { temperature, topP } = c.req.valid("json")
     const question = await getQuestionWithAnswers(id, userId)
 
     if (question.length === 0) {

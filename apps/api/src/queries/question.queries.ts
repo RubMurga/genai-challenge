@@ -26,11 +26,11 @@ export const deleteQuestion = async (id: string, userId: string) => {
   return deletedQuestion
 }
 
-export const getQuestionWithAnswers = async (id: string) => {
+export const getQuestionWithAnswers = async (id: string, userId: string) => {
   const questionWithAnswers = await db
     .select()
     .from(question)
     .leftJoin(answer, eq(question.id, answer.questionId))
-    .where(eq(question.id, id))
+    .where(and(eq(question.id, id), eq(question.userId, userId)))
   return questionWithAnswers
 }

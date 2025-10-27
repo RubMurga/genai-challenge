@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Calendar } from "lucide-react"
 import { DeleteQuestionButton } from "./delete-question-button"
+import { NavigateQuestionButton } from "./navigate-question-button"
 
 interface Question {
   id: string
@@ -29,12 +30,18 @@ export function QuestionCard({ question }: QuestionCardProps) {
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="p-6">
         <div className="space-y-3">
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-start gap-4">
             <p className="text-sm leading-relaxed whitespace-pre-wrap flex-1">
               {question.content}
             </p>
-            <DeleteQuestionButton questionId={question.id} />
+            <div className="flex gap-2">
+              <NavigateQuestionButton questionId={question.id}>
+                View
+              </NavigateQuestionButton>
+              <DeleteQuestionButton questionId={question.id} />
+            </div>
           </div>
+
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <Calendar className="w-3 h-3" />
             <span>Created {formatDate(question.createdAt)}</span>

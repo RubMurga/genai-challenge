@@ -42,3 +42,24 @@ export const deleteQuestion = async (id: string) => {
   })
   return response.json()
 }
+
+export const getQuestionWithAnswers = async (id: string) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].$get({
+    param: { id },
+  })
+  return response.json()
+}
+
+export const requestAnswer = async (
+  questionId: string,
+  temperature: number,
+  topP: number
+) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].answers.$post({
+    param: { id: questionId },
+    json: { temperature, topP },
+  })
+  return response.json()
+}

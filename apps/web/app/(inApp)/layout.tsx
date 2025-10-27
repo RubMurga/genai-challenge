@@ -7,6 +7,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import AppSidebar from "./sideBar"
 import { getServerSession } from "@/lib/auth-server"
+import { OnboardingModal } from "@/components/onboarding"
 
 export default async function InAppLayout({
   children,
@@ -18,6 +19,7 @@ export default async function InAppLayout({
   return (
     <SidebarProvider>
       <Toaster />
+      <OnboardingModal userCreatedAt={session?.user?.createdAt} />
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">

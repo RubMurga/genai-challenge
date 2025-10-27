@@ -21,6 +21,12 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("")
   const router = useRouter()
   const handleSignUp = async () => {
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match")
+      return
+    }
+
     const { error } = await authClient.signUp.email({
       name,
       email,
@@ -30,7 +36,7 @@ export default function SignUp() {
       toast.error(error.message)
     } else {
       toast.success("Account created successfully")
-      router.push("/sign-in")
+      router.push("/questions")
     }
   }
 

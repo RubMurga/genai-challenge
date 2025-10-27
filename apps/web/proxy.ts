@@ -3,6 +3,7 @@ import { getServerSession } from "@/lib/auth-server"
 
 export async function proxy(request: NextRequest) {
   const session = await getServerSession()
+  console.log("session", session)
   if (!session) {
     return NextResponse.redirect(new URL("/", request.url))
   }

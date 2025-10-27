@@ -3,6 +3,9 @@
     "apps/*"
   ],
   "packageManager": "npm@10.8.2",
+  "scripts": {
+    "build": "turbo run build"
+  },
   "devDependencies": {
     "turbo": "^1.10.0",
     "typescript": "^5.0.0"

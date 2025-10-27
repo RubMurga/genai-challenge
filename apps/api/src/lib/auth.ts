@@ -11,5 +11,8 @@ export const auth = betterAuth({
     enabled: true,
   },
   plugins: [openAPI()],
-  trustedOrigins: ["http://localhost:3000"],
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://app.genai.harlanresearch.io",
+  ],
 })

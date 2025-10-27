@@ -14,5 +14,12 @@ export const auth = betterAuth({
   trustedOrigins: [
     "http://localhost:3000",
     "https://app.genai.harlanresearch.io",
+    "https://genai.harlanresearch.io",
   ],
+  advanced: {
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: "app.genai.harlanresearch.io",
+    },
+  },
 })

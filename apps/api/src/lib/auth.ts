@@ -19,7 +19,7 @@ export const auth = betterAuth({
   advanced: {
     crossSubDomainCookies: {
       enabled: true,
-      domain: "app.genai.harlanresearch.io",
+      domain: ".harlanresearch.io",
     },
   },
 })

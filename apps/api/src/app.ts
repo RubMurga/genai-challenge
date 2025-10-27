@@ -10,9 +10,9 @@ const app = new Hono()
     "/api/*",
     cors({
       origin: ["http://localhost:3000", "https://app.genai.harlanresearch.io"],
-      allowHeaders: ["Content-Type", "Authorization"],
+      allowHeaders: ["Content-Type", "Authorization", "Cookie"],
       allowMethods: ["POST", "GET", "OPTIONS", "PUT", "DELETE"],
-      exposeHeaders: ["Content-Length"],
+      exposeHeaders: ["Content-Length", "Set-Cookie"],
       maxAge: 600,
       credentials: true,
     })

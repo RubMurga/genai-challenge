@@ -18,6 +18,7 @@ export async function getServerSession() {
   }
 
   const session = await response.json()
+  console.log("session 1", session)
   return session
 }
 

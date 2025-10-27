@@ -34,3 +34,12 @@ export const getQuestionWithAnswers = async (id: string, userId: string) => {
     .where(and(eq(question.id, id), eq(question.userId, userId)))
   return questionWithAnswers
 }
+
+export const updateQuestionAnalysis = async (id: string, analysis: string) => {
+  const updatedQuestion = await db
+    .update(question)
+    .set({ analysis })
+    .where(eq(question.id, id))
+    .returning()
+  return updatedQuestion[0]
+}

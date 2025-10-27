@@ -9,6 +9,7 @@ import {
   createQuestion,
   deleteQuestion,
   getQuestionWithAnswers,
+  updateQuestionAnalysis,
 } from "@/queries/question.queries"
 import { HonoEnv } from "@/types/global"
 import { answerQuestion, explainAnswers } from "@/clients/openai.client"
@@ -67,6 +68,10 @@ const questionRouter = new Hono<HonoEnv>()
     const userId = c.get("user").id
     const question = await getQuestionWithAnswers(id, userId)
 
+    if (question[0].question.analysis) {
+      return c.json({ explanation: question[0].question.analysis })
+    }
+
     if (question.length === 0) {
       return c.json({ error: "Question not found" }, 404)
     }
@@ -86,6 +91,7 @@ const questionRouter = new Hono<HonoEnv>()
 
     const questionContent = question[0].question.content
     const explanation = await explainAnswers(questionContent, answers)
+    await updateQuestionAnalysis(id, explanation!)
     return c.json({ explanation })
   })
 

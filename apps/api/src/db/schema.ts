@@ -70,6 +70,7 @@ export const verification = pgTable("verification", {
 export const question = pgTable("question", {
   id: uuid("id").primaryKey().defaultRandom(),
   content: text("content").notNull(),
+  analysis: text("analysis"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()

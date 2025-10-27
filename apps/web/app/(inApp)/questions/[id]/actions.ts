@@ -1,6 +1,6 @@
 "use server"
 
-import { requestAnswer } from "@/lib/api"
+import { requestAnswer, explainAnswers } from "@/lib/api"
 import { revalidatePath } from "next/cache"
 
 export const requestAnswerAction = async (
@@ -36,4 +36,9 @@ export const requestAnswerAction = async (
   )
   revalidatePath(`/questions/${questionId}`)
   return { errors: {} as Record<string, string[]>, success: true }
+}
+
+export const explainAnswersAction = async (questionId: string) => {
+  const result = await explainAnswers(questionId)
+  return result
 }

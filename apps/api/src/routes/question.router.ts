@@ -11,7 +11,7 @@ import {
   getQuestionWithAnswers,
 } from "@/queries/question.queries"
 import { HonoEnv } from "@/types/global"
-import { answerQuestion } from "@/clients/openai.client"
+import { answerQuestion, explainAnswers } from "@/clients/openai.client"
 import { createAnswer } from "@/queries/answer.queries"
 const questionRouter = new Hono<HonoEnv>()
 
@@ -59,6 +59,34 @@ const questionRouter = new Hono<HonoEnv>()
     const answer = await answerQuestion(questionContent, temperature, topP)
     await createAnswer(answer!, temperature, topP, id)
     return c.json({ success: true })
+  })
+
+  /* Explain answers differences */
+  .post("/:id/answers/explain", async (c) => {
+    const { id } = c.req.param()
+    const userId = c.get("user").id
+    const question = await getQuestionWithAnswers(id, userId)
+
+    if (question.length === 0) {
+      return c.json({ error: "Question not found" }, 404)
+    }
+
+    const answers = question
+      .map((item) => item.answer)
+      .filter((answer) => answer !== null)
+      .map((ans) => ({
+        content: ans!.content,
+        temperature: ans!.temperature,
+        topP: ans!.topP,
+      }))
+
+    if (answers.length === 0) {
+      return c.json({ error: "No answers found" }, 404)
+    }
+
+    const questionContent = question[0].question.content
+    const explanation = await explainAnswers(questionContent, answers)
+    return c.json({ explanation })
   })
 
   .delete("/:id", async (c) => {

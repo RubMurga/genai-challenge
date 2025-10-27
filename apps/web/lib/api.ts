@@ -63,3 +63,11 @@ export const requestAnswer = async (
   })
   return response.json()
 }
+
+export const explainAnswers = async (questionId: string) => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.questions[":id"].answers.explain.$post({
+    param: { id: questionId },
+  })
+  return response.json()
+}

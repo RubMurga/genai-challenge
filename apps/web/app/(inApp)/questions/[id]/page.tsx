@@ -1,6 +1,7 @@
 import { getQuestionWithAnswers } from "@/lib/api"
 import { notFound } from "next/navigation"
 import { RequestAnswerButton } from "@/app/(inApp)/questions/[id]/request-answer-button"
+import { ExplainAnswersButton } from "@/app/(inApp)/questions/[id]/explain-answers-button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -47,7 +48,10 @@ export default async function QuestionDetail({ params }: PageProps) {
             View your question and answers
           </p>
         </div>
-        <RequestAnswerButton questionId={id} />
+        <div className="flex gap-2">
+          {answers.length > 0 && <ExplainAnswersButton questionId={id} />}
+          <RequestAnswerButton questionId={id} />
+        </div>
       </div>
 
       {/* Question */}

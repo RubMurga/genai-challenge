@@ -32,7 +32,7 @@ export default async function QuestionDetail({ params }: PageProps) {
   const question = questionWithAnswers[0].question
   const answers = questionWithAnswers
     .map((item) => item.answer)
-    .filter((answer) => answer !== null)
+    .filter((answer): answer is NonNullable<typeof answer> => answer !== null)
 
   return (
     <div className="space-y-6">

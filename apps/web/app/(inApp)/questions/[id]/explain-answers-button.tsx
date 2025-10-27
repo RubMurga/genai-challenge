@@ -61,7 +61,7 @@ export function ExplainAnswersButton({
                 <Spinner />
               </div>
             ) : explanation ? (
-              <div className="prose prose-sm max-w-none">
+              <div className="prose prose-sm max-w-none p-2">
                 <p className="whitespace-pre-wrap text-sm leading-relaxed">
                   {explanation}
                 </p>

@@ -1,6 +1,14 @@
 {
   "name": "@genai/api",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsup",

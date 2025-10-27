@@ -28,15 +28,16 @@ export function ExplainAnswersButton({
   const handleExplain = async () => {
     setIsLoading(true)
     setOpen(true)
-    try {
-      const result = await explainAnswersAction(questionId)
+
+    const result = await explainAnswersAction(questionId)
+
+    if ("explanation" in result) {
       setExplanation(result.explanation)
-    } catch (error) {
-      toast.error("Failed to generate explanation")
-      console.error(error)
-    } finally {
-      setIsLoading(false)
+    } else if ("error" in result) {
+      toast.error(result.error)
     }
+
+    setIsLoading(false)
   }
 
   return (

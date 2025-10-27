@@ -23,10 +23,14 @@ export const getQuestions = async () => {
   return response.json()
 }
 
-export const createQuestion = async (content: string) => {
+export const createQuestion = async (
+  content: string,
+  temperature: number,
+  topP: number
+) => {
   const client = await createAuthenticatedClient()
   const response = await client.api.questions.$post({
-    json: { content },
+    json: { content, temperature, topP },
   })
   return response.json()
 }

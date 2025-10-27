@@ -11,6 +11,8 @@ export async function getServerSession() {
     }
   )
 
+  console.log("headersList", headersList.get("cookie"))
+
   console.log("response", response)
 
   if (!response.ok) {

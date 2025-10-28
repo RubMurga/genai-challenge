@@ -11,16 +11,11 @@ export async function getServerSession() {
     }
   )
 
-  console.log("headersList", headersList.get("cookie"))
-
-  console.log("response", response)
-
   if (!response.ok) {
     return null
   }
 
   const session = await response.json()
-  console.log("session 1", session)
   return session
 }
 

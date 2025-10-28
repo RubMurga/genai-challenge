@@ -5,6 +5,10 @@ import { db } from "@/db"
 import { openAPI } from "better-auth/plugins"
 
 export const auth = betterAuth({
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "https://api.genai.harlanresearch.io"
+      : "http://localhost:3001",
   database: drizzleAdapter(db, {
     provider: "pg", // or "mysql", "sqlite"
   }),

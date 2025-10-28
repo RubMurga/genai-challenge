@@ -68,12 +68,12 @@ const questionRouter = new Hono<HonoEnv>()
     const userId = c.get("user").id
     const question = await getQuestionWithAnswers(id, userId)
 
-    if (question[0].question.analysis) {
-      return c.json({ explanation: question[0].question.analysis })
-    }
-
     if (question.length === 0) {
       return c.json({ error: "Question not found" }, 404)
+    }
+
+    if (question[0].question.analysis) {
+      return c.json({ explanation: question[0].question.analysis })
     }
 
     const answers = question

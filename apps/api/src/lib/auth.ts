@@ -22,6 +22,7 @@ export const auth = betterAuth({
     "http://localhost:3000",
     "http://localhost:3001",
     "https://app.genai.harlanresearch.io",
+    "https://api.genai.harlanresearch.io",
     "https://genai.harlanresearch.io",
   ],
   advanced: {

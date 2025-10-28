@@ -31,7 +31,6 @@ export default function SignIn() {
       router.push("/questions")
     }
   }
-
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",

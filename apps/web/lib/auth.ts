@@ -1,4 +1,3 @@
-import "dotenv/config"
 import { createAuthClient } from "better-auth/client"
 
 const authClient = createAuthClient({

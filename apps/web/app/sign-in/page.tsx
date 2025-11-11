@@ -54,9 +54,17 @@ export default function SignIn() {
               />
             </Link>
           </div>
-
-          <p className="text-muted-foreground">
-            Sign in to continue your AI experiments
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm text-primary font-medium">
+              AI-Powered Marketing Platform
+            </span>
+          </div>
+          <p className="text-muted-foreground text-lg">
+            Sign in to continue creating marketing content
           </p>
         </div>
 
@@ -65,7 +73,7 @@ export default function SignIn() {
           <CardHeader>
             <CardTitle>Sign In</CardTitle>
             <CardDescription>
-              Enter your credentials to access your account
+              Enter your credentials to access your marketing platform
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -151,7 +159,8 @@ export default function SignIn() {
         {/* Additional Info */}
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Sign in to access your saved experiments and continue exploring AI
+            Sign in to access your marketing content, track performance, and
+            manage your social accounts
           </p>
         </div>
       </div>

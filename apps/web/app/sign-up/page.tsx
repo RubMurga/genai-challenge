@@ -58,17 +58,26 @@ export default function SignUp() {
               />
             </Link>
           </div>
-          <p className="text-muted-foreground">
-            Start experimenting with AI today
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-4">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm text-primary font-medium">
+              AI-Powered Marketing Platform
+            </span>
+          </div>
+          <p className="text-muted-foreground text-lg">
+            Create marketing from just words—no marketing degree required
           </p>
         </div>
 
         {/* Sign Up Form */}
         <Card>
           <CardHeader>
-            <CardTitle>Sign Up</CardTitle>
+            <CardTitle>Get Started</CardTitle>
             <CardDescription>
-              Enter your information to create your account
+              Create your account and start generating marketing content with natural language
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -187,9 +196,9 @@ export default function SignUp() {
             By creating an account, you&apos;ll be able to:
           </p>
           <ul className="mt-2 text-sm text-muted-foreground space-y-1">
-            <li>• Save and manage your AI experiments</li>
-            <li>• Customize AI parameters and settings</li>
-            <li>• Access advanced features and tools</li>
+            <li>• Generate marketing content from natural language</li>
+            <li>• Track performance across social networks</li>
+            <li>• Manage content and connect your social accounts</li>
           </ul>
         </div>
       </div>

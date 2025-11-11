@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Grammar - Experiment with AI",
+  title: "Grammar - Marketing for everyone",
   description:
-    "Experiment with AI models and understand the impact of top_p and temperature parameters",
+    "Create marketing content for social networks with natural language—no marketing degree required.",
 }
 
 export default function RootLayout({

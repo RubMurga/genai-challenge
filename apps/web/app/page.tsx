@@ -10,6 +10,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/components/footer"
 import { DashboardPreview } from "@/components/dashboard-preview"
+import { ScrollAnimation } from "@/components/scroll-animation"
 
 export default function Home() {
   return (
@@ -112,109 +113,113 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Text Content */}
-            <div className="text-center md:text-left">
-              <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-6">
-                The Challenge
+            <ScrollAnimation direction="right" delay={0.1}>
+              <div className="text-center md:text-left">
+                <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-6">
+                  The Challenge
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                  Built Your Product.{" "}
+                  <span className="text-primary">Now What?</span>
+                </h2>
+                <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    You just created an amazing product. But when it comes to
+                    marketing, you&apos;re suddenly lost in a maze of unfamiliar
+                    terms, endless options, and conflicting advice.
+                  </p>
+                  <p className="text-xl font-semibold text-foreground">
+                    We change that.
+                  </p>
+                </div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                Built Your Product.{" "}
-                <span className="text-primary">Now What?</span>
-              </h2>
-              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-                <p>
-                  You just created an amazing product. But when it comes to
-                  marketing, you&apos;re suddenly lost in a maze of unfamiliar
-                  terms, endless options, and conflicting advice.
-                </p>
-                <p className="text-xl font-semibold text-foreground">
-                  We change that.
-                </p>
-              </div>
-            </div>
+            </ScrollAnimation>
 
             {/* Simple Input Interface */}
-            <div className="relative">
-              <Card className="bg-card border-2 shadow-2xl">
-                <CardHeader className="border-b bg-muted/30">
-                  <CardTitle className="text-lg">
-                    Describe your product
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  {/* User Input */}
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-sm font-semibold text-primary">
-                          You
-                        </span>
-                      </div>
-                      <div className="flex-1 bg-muted/50 rounded-lg p-4">
-                        <p className="text-sm">
-                          I built a fitness app that helps people track
-                          workouts. I want to reach people aged 25-40 who are
-                          interested in home fitness. Can you help me create
-                          content for Instagram?
-                        </p>
+            <ScrollAnimation direction="left" delay={0.2}>
+              <div className="relative">
+                <Card className="bg-card border-2 shadow-2xl">
+                  <CardHeader className="border-b bg-muted/30">
+                    <CardTitle className="text-lg">
+                      Describe your product
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-6 space-y-4">
+                    {/* User Input */}
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                          <span className="text-sm font-semibold text-primary">
+                            You
+                          </span>
+                        </div>
+                        <div className="flex-1 bg-muted/50 rounded-lg p-4">
+                          <p className="text-sm">
+                            I built a fitness app that helps people track
+                            workouts. I want to reach people aged 25-40 who are
+                            interested in home fitness. Can you help me create
+                            content for Instagram?
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* AI Response */}
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg
-                          className="w-4 h-4 text-primary-foreground"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex-1 bg-primary/5 border border-primary/20 rounded-lg p-4">
-                        <p className="text-sm text-foreground mb-2">
-                          <strong>
-                            I&apos;ve created your marketing plan:
-                          </strong>
-                        </p>
-                        <ul className="text-sm space-y-1 text-muted-foreground">
-                          <li>✓ 10 Instagram posts ready to publish</li>
-                          <li>✓ Content calendar for the next month</li>
-                          <li>✓ Hashtag strategy included</li>
-                          <li>✓ Best posting times optimized</li>
-                        </ul>
+                    {/* AI Response */}
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg
+                            className="w-4 h-4 text-primary-foreground"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
+                          </svg>
+                        </div>
+                        <div className="flex-1 bg-primary/5 border border-primary/20 rounded-lg p-4">
+                          <p className="text-sm text-foreground mb-2">
+                            <strong>
+                              I&apos;ve created your marketing plan:
+                            </strong>
+                          </p>
+                          <ul className="text-sm space-y-1 text-muted-foreground">
+                            <li>✓ 10 Instagram posts ready to publish</li>
+                            <li>✓ Content calendar for the next month</li>
+                            <li>✓ Hashtag strategy included</li>
+                            <li>✓ Best posting times optimized</li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Typing Indicator */}
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <div className="flex gap-1">
-                      <div
-                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
-                        style={{ animationDelay: "0ms" }}
-                      ></div>
-                      <div
-                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
-                        style={{ animationDelay: "150ms" }}
-                      ></div>
-                      <div
-                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
-                        style={{ animationDelay: "300ms" }}
-                      ></div>
+                    {/* Typing Indicator */}
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="flex gap-1">
+                        <div
+                          className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                          style={{ animationDelay: "0ms" }}
+                        ></div>
+                        <div
+                          className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                          style={{ animationDelay: "150ms" }}
+                        ></div>
+                        <div
+                          className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                          style={{ animationDelay: "300ms" }}
+                        ></div>
+                      </div>
+                      <span>Creating your marketing content...</span>
                     </div>
-                    <span>Creating your marketing content...</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -225,20 +230,24 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See It In Action
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Experience the power of our platform
-            </p>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl opacity-50"></div>
-            <div className="relative">
-              <DashboardPreview />
+          <ScrollAnimation direction="up" delay={0.1}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                See It In Action
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Experience the power of our platform
+              </p>
             </div>
-          </div>
+          </ScrollAnimation>
+          <ScrollAnimation direction="up" delay={0.2}>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl opacity-50"></div>
+              <div className="relative">
+                <DashboardPreview />
+              </div>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -285,36 +294,37 @@ export default function Home() {
                   "As your product grows, our platform grows with you, automatically adapting strategies to your changing needs.",
               },
             ].map((item, idx) => (
-              <Card
-                key={idx}
-                className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
-                  idx % 2 === 0
-                    ? "!bg-white dark:!bg-muted/20"
-                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
-                }`}
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d={item.icon}
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {item.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+              <ScrollAnimation key={idx} direction="up" delay={idx * 0.1}>
+                <Card
+                  className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
+                    idx % 2 === 0
+                      ? "!bg-white dark:!bg-muted/20"
+                      : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
+                      <svg
+                        className="w-6 h-6 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={item.icon}
+                        />
+                      </svg>
+                    </div>
+                    <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                    <CardDescription className="text-base">
+                      {item.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -372,41 +382,42 @@ export default function Home() {
                 step: "04",
               },
             ].map((item, idx) => (
-              <Card
-                key={idx}
-                className={`hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 group ${
-                  idx % 2 === 0
-                    ? "!bg-white dark:!bg-muted/20"
-                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
-                }`}
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-                      <svg
-                        className="w-6 h-6 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d={item.icon}
-                        />
-                      </svg>
+              <ScrollAnimation key={idx} direction="up" delay={idx * 0.1}>
+                <Card
+                  className={`hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 group ${
+                    idx % 2 === 0
+                      ? "!bg-white dark:!bg-muted/20"
+                      : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
+                        <svg
+                          className="w-6 h-6 text-primary"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d={item.icon}
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-4xl font-bold text-muted-foreground/20">
+                        {item.step}
+                      </span>
                     </div>
-                    <span className="text-4xl font-bold text-muted-foreground/20">
-                      {item.step}
-                    </span>
-                  </div>
-                  <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {item.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+                    <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                    <CardDescription className="text-base">
+                      {item.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -468,54 +479,55 @@ export default function Home() {
                 ],
               },
             ].map((item, idx) => (
-              <Card
-                key={idx}
-                className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
-                  idx % 2 === 0
-                    ? "!bg-white dark:!bg-muted/20"
-                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
-                }`}
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d={item.icon}
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {item.items.map((listItem, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <svg
-                          className="w-4 h-4 text-primary"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {listItem}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              <ScrollAnimation key={idx} direction="up" delay={idx * 0.1}>
+                <Card
+                  className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
+                    idx % 2 === 0
+                      ? "!bg-white dark:!bg-muted/20"
+                      : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-6 h-6 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={item.icon}
+                        />
+                      </svg>
+                    </div>
+                    <CardTitle>{item.title}</CardTitle>
+                    <CardDescription>{item.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {item.items.map((listItem, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <svg
+                            className="w-4 h-4 text-primary"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          {listItem}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -587,39 +599,40 @@ export default function Home() {
                   "Whether you're just starting or scaling up, our platform adapts to your needs. Create more content, reach more platforms, and grow your audience.",
               },
             ].map((item, idx) => (
-              <Card
-                key={idx}
-                className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
-                  idx % 2 === 0
-                    ? "!bg-white dark:!bg-muted/20"
-                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
-                }`}
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
-                    <svg
-                      className="w-6 h-6 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d={item.icon}
-                      />
-                    </svg>
-                  </div>
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {item.content}
-                  </p>
-                </CardContent>
-              </Card>
+              <ScrollAnimation key={idx} direction="up" delay={idx * 0.1}>
+                <Card
+                  className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
+                    idx % 2 === 0
+                      ? "!bg-white dark:!bg-muted/20"
+                      : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-6 h-6 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={item.icon}
+                        />
+                      </svg>
+                    </div>
+                    <CardTitle>{item.title}</CardTitle>
+                    <CardDescription>{item.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      {item.content}
+                    </p>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -628,34 +641,36 @@ export default function Home() {
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-2xl opacity-50"></div>
-            <Card className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-2xl">
-              <CardContent className="py-16 px-8">
-                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-sm font-medium mb-6">
-                  Ready to Get Started?
-                </div>
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                  Ready to Turn Products into Customers?
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  Join hundreds of creators who&apos;ve transformed their
-                  marketing approach with our platform. Create social media
-                  marketing content with natural language—no marketing degree
-                  required.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
-                    asChild
-                  >
-                    <Link href="/sign-up">Get Started</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <ScrollAnimation direction="up" delay={0.1}>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-2xl opacity-50"></div>
+              <Card className="relative bg-gradient-to-br from-muted/30 via-muted/20 to-muted/30 border-border/50 shadow-2xl">
+                <CardContent className="py-16 px-8">
+                  <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-sm font-medium mb-6">
+                    Ready to Get Started?
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                    Ready to Turn Products into Customers?
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                    Join hundreds of creators who&apos;ve transformed their
+                    marketing approach with our platform. Create social media
+                    marketing content with natural language—no marketing degree
+                    required.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      size="lg"
+                      className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
+                      asChild
+                    >
+                      <Link href="/sign-up">Get Started</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 

@@ -13,7 +13,7 @@ import { DashboardPreview } from "@/components/dashboard-preview"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/80 to-muted/60 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/80 to-muted/60 relative">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Blur circles */}
@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50 relative">
+      <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-center relative">
           <Link href="/" className="flex items-center">
             <Image
@@ -117,7 +117,8 @@ export default function Home() {
                 The Challenge
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                Built Your Product. <span className="text-primary">Now What?</span>
+                Built Your Product.{" "}
+                <span className="text-primary">Now What?</span>
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
@@ -135,20 +136,25 @@ export default function Home() {
             <div className="relative">
               <Card className="bg-card border-2 shadow-2xl">
                 <CardHeader className="border-b bg-muted/30">
-                  <CardTitle className="text-lg">Describe your product</CardTitle>
+                  <CardTitle className="text-lg">
+                    Describe your product
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-4">
                   {/* User Input */}
                   <div className="space-y-2">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-sm font-semibold text-primary">You</span>
+                        <span className="text-sm font-semibold text-primary">
+                          You
+                        </span>
                       </div>
                       <div className="flex-1 bg-muted/50 rounded-lg p-4">
                         <p className="text-sm">
-                          I built a fitness app that helps people track workouts. 
-                          I want to reach people aged 25-40 who are interested in 
-                          home fitness. Can you help me create content for Instagram?
+                          I built a fitness app that helps people track
+                          workouts. I want to reach people aged 25-40 who are
+                          interested in home fitness. Can you help me create
+                          content for Instagram?
                         </p>
                       </div>
                     </div>
@@ -158,13 +164,25 @@ export default function Home() {
                   <div className="space-y-2">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
-                        <svg className="w-4 h-4 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <svg
+                          className="w-4 h-4 text-primary-foreground"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
                         </svg>
                       </div>
                       <div className="flex-1 bg-primary/5 border border-primary/20 rounded-lg p-4">
                         <p className="text-sm text-foreground mb-2">
-                          <strong>I&apos;ve created your marketing plan:</strong>
+                          <strong>
+                            I&apos;ve created your marketing plan:
+                          </strong>
                         </p>
                         <ul className="text-sm space-y-1 text-muted-foreground">
                           <li>✓ 10 Instagram posts ready to publish</li>
@@ -179,9 +197,18 @@ export default function Home() {
                   {/* Typing Indicator */}
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <div className="flex gap-1">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      <div
+                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                        style={{ animationDelay: "0ms" }}
+                      ></div>
+                      <div
+                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                        style={{ animationDelay: "150ms" }}
+                      ></div>
+                      <div
+                        className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"
+                        style={{ animationDelay: "300ms" }}
+                      ></div>
                     </div>
                     <span>Creating your marketing content...</span>
                   </div>

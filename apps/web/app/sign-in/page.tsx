@@ -29,13 +29,13 @@ export default function SignIn() {
       toast.error(error.message)
     } else {
       toast.success("Signed in successfully")
-      router.push("/waitlist")
+      router.push("/onboarding")
     }
   }
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: `${window.location.origin}/waitlist`,
+      callbackURL: `${window.location.origin}/onboarding`,
     })
   }
 

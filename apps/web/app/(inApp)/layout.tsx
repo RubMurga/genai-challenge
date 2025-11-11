@@ -35,7 +35,7 @@ export default async function InAppLayout({
           </Link>
           <div className="flex-1" />
           <div className="flex items-center gap-3">
-            <div className="text-right">
+            <div className="text-right hidden md:block">
               <p className="text-sm font-medium">
                 {session?.user?.name || "User"}
               </p>
@@ -43,8 +43,8 @@ export default async function InAppLayout({
                 {session?.user?.email || "user@example.com"}
               </p>
             </div>
-            <Avatar className="w-8 h-8">
-              <AvatarFallback className="text-xs">
+            <Avatar className="w-8 h-8 bg-gray-200">
+              <AvatarFallback className="text-xs bg-gray-200">
                 {session?.user?.name?.charAt(0) || "U"}
               </AvatarFallback>
             </Avatar>

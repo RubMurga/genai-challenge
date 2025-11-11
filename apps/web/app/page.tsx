@@ -77,21 +77,17 @@ export default function Home() {
           <p className="text-lg text-muted-foreground mt-4 leading-relaxed">
             We change that.
           </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+            Track performance, manage content, and connect your social accounts
+            all in one powerful dashboard
+          </p>
         </div>
       </section>
 
       {/* Dashboard Preview */}
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              See Your Marketing in Action
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Track performance, manage content, and connect your social
-              accounts all in one powerful dashboard
-            </p>
-          </div>
+          <div className="text-center mb-12"></div>
           <DashboardPreview />
         </div>
       </section>

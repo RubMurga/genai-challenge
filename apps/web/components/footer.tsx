@@ -10,7 +10,7 @@ export function Footer() {
             <Image
               src="/logos/logo-dark.png"
               alt="Grammar Logo"
-              width={110}
+              width={82}
               height={100}
             />
           </Link>

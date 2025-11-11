@@ -101,7 +101,11 @@ export default function SignIn() {
               />
             </div>
 
-            <Button className="w-full" size="lg" onClick={handleSignIn}>
+            <Button
+              className="w-full cursor-pointer"
+              size="lg"
+              onClick={handleSignIn}
+            >
               Sign In
             </Button>
 
@@ -117,7 +121,7 @@ export default function SignIn() {
             </div>
 
             <Button
-              className="w-full"
+              className="w-full cursor-pointer"
               variant="outline"
               size="lg"
               onClick={handleGoogleSignIn}

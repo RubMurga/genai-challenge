@@ -77,7 +77,8 @@ export default function SignUp() {
           <CardHeader>
             <CardTitle>Get Started</CardTitle>
             <CardDescription>
-              Create your account and start generating marketing content with natural language
+              Create your account and start generating marketing content with
+              natural language
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -129,7 +130,11 @@ export default function SignUp() {
               />
             </div>
 
-            <Button className="w-full" size="lg" onClick={handleSignUp}>
+            <Button
+              className="w-full cursor-pointer"
+              size="lg"
+              onClick={handleSignUp}
+            >
               Create Account
             </Button>
 
@@ -145,7 +150,7 @@ export default function SignUp() {
             </div>
 
             <Button
-              className="w-full"
+              className="w-full cursor-pointer"
               variant="outline"
               size="lg"
               onClick={handleGoogleSignIn}

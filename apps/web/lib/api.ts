@@ -1,5 +1,5 @@
 import { hc } from "hono/client"
-import type { AppType } from "@genai/api"
+import type { AppType } from "@grammar/api"
 import { getServerCookieHeaders } from "./auth-server"
 
 // Helper function to create authenticated client

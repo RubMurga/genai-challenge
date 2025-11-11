@@ -109,26 +109,85 @@ export default function Home() {
         {/* Decorative shapes */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-6">
-            The Challenge
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Built Your Product. <span className="text-primary">Now What?</span>
-          </h2>
-          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              You just created an amazing product. But when it comes to
-              marketing, you&apos;re suddenly lost in a maze of unfamiliar
-              terms, endless options, and conflicting advice.
-            </p>
-            <p className="text-xl font-semibold text-foreground">
-              We change that.
-            </p>
-            <p className="max-w-2xl mx-auto">
-              Track performance, manage content, and connect your social
-              accounts all in one powerful dashboard
-            </p>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Text Content */}
+            <div className="text-center md:text-left">
+              <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-6">
+                The Challenge
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                Built Your Product. <span className="text-primary">Now What?</span>
+              </h2>
+              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  You just created an amazing product. But when it comes to
+                  marketing, you&apos;re suddenly lost in a maze of unfamiliar
+                  terms, endless options, and conflicting advice.
+                </p>
+                <p className="text-xl font-semibold text-foreground">
+                  We change that.
+                </p>
+              </div>
+            </div>
+
+            {/* Simple Input Interface */}
+            <div className="relative">
+              <Card className="bg-card border-2 shadow-2xl">
+                <CardHeader className="border-b bg-muted/30">
+                  <CardTitle className="text-lg">Describe your product</CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 space-y-4">
+                  {/* User Input */}
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-sm font-semibold text-primary">You</span>
+                      </div>
+                      <div className="flex-1 bg-muted/50 rounded-lg p-4">
+                        <p className="text-sm">
+                          I built a fitness app that helps people track workouts. 
+                          I want to reach people aged 25-40 who are interested in 
+                          home fitness. Can you help me create content for Instagram?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* AI Response */}
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg className="w-4 h-4 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 bg-primary/5 border border-primary/20 rounded-lg p-4">
+                        <p className="text-sm text-foreground mb-2">
+                          <strong>I&apos;ve created your marketing plan:</strong>
+                        </p>
+                        <ul className="text-sm space-y-1 text-muted-foreground">
+                          <li>✓ 10 Instagram posts ready to publish</li>
+                          <li>✓ Content calendar for the next month</li>
+                          <li>✓ Hashtag strategy included</li>
+                          <li>✓ Best posting times optimized</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Typing Indicator */}
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                    <span>Creating your marketing content...</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

@@ -7,6 +7,8 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import AppSidebar from "./sideBar"
 import { getServerSession } from "@/lib/auth-server"
+import Link from "next/link"
+import Image from "next/image"
 
 export default async function InAppLayout({
   children,
@@ -20,8 +22,17 @@ export default async function InAppLayout({
       <Toaster />
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 relative">
           <SidebarTrigger className="-ml-1" />
+          <div className="flex-1" />
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+            <Image
+              src="/logos/logo-dark.png"
+              alt="Grammar Logo"
+              width={110}
+              height={64}
+            />
+          </Link>
           <div className="flex-1" />
           <div className="flex items-center gap-3">
             <div className="text-right">

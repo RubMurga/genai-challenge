@@ -4,7 +4,11 @@
   ],
   "packageManager": "npm@10.8.2",
   "scripts": {
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "dev": "turbo run dev",
+    "api:migrate": "npm run db:migrate --workspace=@grammar/api",
+    "api:install": "npm install --workspace=@grammar/api"
   },
   "devDependencies": {
     "turbo": "^1.10.0",

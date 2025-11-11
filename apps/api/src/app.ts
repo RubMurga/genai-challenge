@@ -1,6 +1,5 @@
 import { Hono } from "hono"
 import { auth } from "@/lib/auth"
-import { questionRouter } from "./routes/question.router"
 import { cors } from "hono/cors"
 const app = new Hono()
 
@@ -11,8 +10,9 @@ const app = new Hono()
     cors({
       origin: [
         "http://localhost:3000",
-        "https://app.genai.harlanresearch.io",
-        "https://api.genai.harlanresearch.io",
+        "https://app.grammar.so",
+        "https://api.grammar.so",
+        "https://grammar.so",
       ],
       allowHeaders: ["Content-Type", "Authorization", "Cookie"],
       allowMethods: ["POST", "GET", "OPTIONS", "PUT", "DELETE"],
@@ -23,7 +23,6 @@ const app = new Hono()
   )
 
   .on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
-  .route("/api/questions", questionRouter)
   .get("/", (c) => {
     return c.text("All Systems operational.")
   })

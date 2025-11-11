@@ -1,5 +1,5 @@
 {
-  "name": "@genai/api",
+  "name": "@grammar/api",
   "type": "module",
   "exports": {
     ".": {

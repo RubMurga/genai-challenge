@@ -146,7 +146,10 @@ export function DashboardPreview() {
                       platformLogo: "/social_logos/facebook.png",
                     },
                   ].map((post, idx) => (
-                    <Card key={idx} className="overflow-hidden">
+                    <Card
+                      key={idx}
+                      className="overflow-hidden p-0 shadow-xl border-2 border-gray-300 dark:border-gray-600 hover:shadow-2xl hover:border-gray-400 dark:hover:border-gray-500 transition-all"
+                    >
                       <div className="aspect-[9/16] relative overflow-hidden bg-muted">
                         <Image
                           src={post.image}
@@ -294,19 +297,19 @@ export function DashboardPreview() {
                   {[
                     {
                       platform: "TikTok",
-                      handle: "@TryItOnAI",
+                      handle: "Grammar.so",
                       status: "Connected",
                       logo: "/social_logos/tiktok.png",
                     },
                     {
                       platform: "Meta",
-                      handle: "@TryItOnAI",
+                      handle: "Grammar.so",
                       status: "Connected",
                       logo: "/social_logos/facebook.png",
                     },
                     {
                       platform: "Instagram",
-                      handle: "@TryItOnAI",
+                      handle: "Grammar.so",
                       status: "Connected",
                       logo: "/social_logos/instagram.png",
                     },
@@ -347,7 +350,7 @@ export function DashboardPreview() {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="text-xs w-full"
+                          className="text-xs w-full border-gray-300 dark:border-gray-600"
                         >
                           {account.status}
                         </Button>
@@ -486,7 +489,7 @@ export function DashboardPreview() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Called Grammar backend</span>
+
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
                       load_social_platforms
                     </code>
@@ -505,7 +508,6 @@ export function DashboardPreview() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Called Grammar backend</span>
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded">
                       create_content_plan
                     </code>

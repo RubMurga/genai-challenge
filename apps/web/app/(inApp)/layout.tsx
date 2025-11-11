@@ -18,7 +18,7 @@ export default async function InAppLayout({
   const session = await getServerSession()
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <Toaster />
       <AppSidebar />
       <SidebarInset>

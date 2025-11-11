@@ -157,7 +157,7 @@ export default function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-20 relative bg-muted/50">
+      <section className="container mx-auto px-4 py-20 relative bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-4">
@@ -173,119 +173,69 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <CardTitle className="text-xl mb-2">
-                  Get Customers in Days, Not Months
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Skip the months of marketing learning curve and start getting
-                  real customers within days of launching your product.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    />
-                  </svg>
-                </div>
-                <CardTitle className="text-xl mb-2">
-                  Marketing That Speaks Your Language
-                </CardTitle>
-                <CardDescription className="text-base">
-                  No marketing jargon or buzzwords—just clear, straightforward
-                  guidance that makes sense to you.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <CardTitle className="text-xl mb-2">
-                  No Marketing Degree Required
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Let our platform handle the complex marketing strategy while
-                  you focus on what you do best—building great products.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                </div>
-                <CardTitle className="text-xl mb-2">
-                  Scale Without the Learning Curve
-                </CardTitle>
-                <CardDescription className="text-base">
-                  As your product grows, our platform grows with you,
-                  automatically adapting strategies to your changing needs.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              {
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                title: "Get Customers in Days, Not Months",
+                description:
+                  "Skip the months of marketing learning curve and start getting real customers within days of launching your product.",
+              },
+              {
+                icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+                title: "Marketing That Speaks Your Language",
+                description:
+                  "No marketing jargon or buzzwords—just clear, straightforward guidance that makes sense to you.",
+              },
+              {
+                icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+                title: "No Marketing Degree Required",
+                description:
+                  "Let our platform handle the complex marketing strategy while you focus on what you do best—building great products.",
+              },
+              {
+                icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+                title: "Scale Without the Learning Curve",
+                description:
+                  "As your product grows, our platform grows with you, automatically adapting strategies to your changing needs.",
+              },
+            ].map((item, idx) => (
+              <Card
+                key={idx}
+                className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
+                  idx % 2 === 0
+                    ? "!bg-white dark:!bg-muted/20"
+                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
+                }`}
+              >
+                <CardHeader>
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
+                    <svg
+                      className="w-6 h-6 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d={item.icon}
+                      />
+                    </svg>
+                  </div>
+                  <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                  <CardDescription className="text-base">
+                    {item.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Natural Language Section */}
-      <section className="container mx-auto px-4 py-20 relative bg-muted/80 rounded-3xl my-20 border border-border/50 overflow-hidden">
+      <section className="container mx-auto px-4 py-20 relative bg-muted/40 rounded-3xl my-20 border border-border/50 overflow-hidden">
         {/* Decorative shapes */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-primary/8 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-56 h-56 bg-primary/6 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
@@ -340,8 +290,8 @@ export default function Home() {
                 key={idx}
                 className={`hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 group ${
                   idx % 2 === 0
-                    ? "!bg-white dark:!bg-card"
-                    : "!bg-gradient-to-br !from-primary/15 !via-primary/8 !to-primary/15"
+                    ? "!bg-white dark:!bg-muted/20"
+                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
                 }`}
               >
                 <CardHeader>
@@ -377,7 +327,7 @@ export default function Home() {
       </section>
 
       {/* Who Can Benefit Section */}
-      <section className="container mx-auto px-4 py-20 relative bg-gradient-to-br from-muted/80 via-muted/70 to-muted/60 rounded-3xl my-8 border-2 border-border shadow-lg overflow-hidden">
+      <section className="container mx-auto px-4 py-20 relative bg-gradient-to-br from-muted/40 via-muted/30 to-muted/30 rounded-3xl my-8 border-2 border-border shadow-lg overflow-hidden">
         {/* Decorative shapes */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-primary/8 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary/6 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
@@ -436,8 +386,8 @@ export default function Home() {
                 key={idx}
                 className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
                   idx % 2 === 0
-                    ? "!bg-white dark:!bg-card"
-                    : "!bg-gradient-to-br !from-primary/15 !via-primary/8 !to-primary/15"
+                    ? "!bg-white dark:!bg-muted/20"
+                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
                 }`}
               >
                 <CardHeader>
@@ -486,7 +436,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Our Platform Section */}
-      <section className="container mx-auto px-4 py-20 relative bg-muted/50">
+      <section className="container mx-auto px-4 py-20 relative bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-4">
@@ -555,8 +505,8 @@ export default function Home() {
                 key={idx}
                 className={`hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group ${
                   idx % 2 === 0
-                    ? "!bg-white dark:!bg-card"
-                    : "!bg-gradient-to-br !from-primary/15 !via-primary/8 !to-primary/15"
+                    ? "!bg-white dark:!bg-muted/20"
+                    : "!bg-gradient-to-br !from-primary/10 !via-primary/5 !to-primary/10"
                 }`}
               >
                 <CardHeader>

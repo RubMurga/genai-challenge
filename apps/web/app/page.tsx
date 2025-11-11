@@ -13,9 +13,16 @@ import { DashboardPreview } from "@/components/dashboard-preview"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 -right-4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+      <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50 relative">
         <div className="container mx-auto px-4 py-4 flex items-center justify-center relative">
           <Link href="/" className="flex items-center">
             <Image
@@ -37,24 +44,38 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section className="container mx-auto px-4 py-20 text-center relative">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-            Create Marketing for
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm text-primary font-medium">
+              AI-Powered Marketing Platform
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent">
+            Create Marketing from
             <br />
-            <span className="text-primary">Social Networks</span>
+            <span className="text-primary">just words</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             Get users with natural language—no marketing degree required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6" asChild>
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
+              asChild
+            >
               <Link href="/sign-up">Get Started</Link>
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-6"
+              className="text-lg px-8 py-6 border-2 hover:bg-muted/50 transition-all"
               asChild
             >
               <Link href="/learn-more">Learn More</Link>
@@ -64,38 +85,58 @@ export default function Home() {
       </section>
 
       {/* Problem Statement */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Built Your Product. Now What?
+          <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-6">
+            The Challenge
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            Built Your Product. <span className="text-primary">Now What?</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            You just created an amazing product. But when it comes to marketing,
-            you&apos;re suddenly lost in a maze of unfamiliar terms, endless
-            options, and conflicting advice.
-          </p>
-          <p className="text-lg text-muted-foreground mt-4 leading-relaxed">
-            We change that.
-          </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-            Track performance, manage content, and connect your social accounts
-            all in one powerful dashboard
-          </p>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              You just created an amazing product. But when it comes to
+              marketing, you&apos;re suddenly lost in a maze of unfamiliar
+              terms, endless options, and conflicting advice.
+            </p>
+            <p className="text-xl font-semibold text-foreground">
+              We change that.
+            </p>
+            <p className="max-w-2xl mx-auto">
+              Track performance, manage content, and connect your social
+              accounts all in one powerful dashboard
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Dashboard Preview */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12"></div>
-          <DashboardPreview />
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              See It In Action
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Experience the power of our platform
+            </p>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl opacity-50"></div>
+            <div className="relative">
+              <DashboardPreview />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-4">
+              Why Choose Us
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Benefits, Not Features
             </h2>
@@ -105,10 +146,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -122,6 +163,8 @@ export default function Home() {
                       d="M13 10V3L4 14h7v7l9-11h-7z"
                     />
                   </svg>
+                </div>
+                <CardTitle className="text-xl mb-2">
                   Get Customers in Days, Not Months
                 </CardTitle>
                 <CardDescription className="text-base">
@@ -131,9 +174,9 @@ export default function Home() {
               </CardHeader>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -147,6 +190,8 @@ export default function Home() {
                       d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
                     />
                   </svg>
+                </div>
+                <CardTitle className="text-xl mb-2">
                   Marketing That Speaks Your Language
                 </CardTitle>
                 <CardDescription className="text-base">
@@ -156,9 +201,9 @@ export default function Home() {
               </CardHeader>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -172,6 +217,8 @@ export default function Home() {
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
+                </div>
+                <CardTitle className="text-xl mb-2">
                   No Marketing Degree Required
                 </CardTitle>
                 <CardDescription className="text-base">
@@ -181,9 +228,9 @@ export default function Home() {
               </CardHeader>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -197,6 +244,8 @@ export default function Home() {
                       d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                     />
                   </svg>
+                </div>
+                <CardTitle className="text-xl mb-2">
                   Scale Without the Learning Curve
                 </CardTitle>
                 <CardDescription className="text-base">
@@ -210,9 +259,12 @@ export default function Home() {
       </section>
 
       {/* Natural Language Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative bg-muted/30 rounded-3xl my-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block px-3 py-1 rounded-full bg-background text-sm font-medium mb-4">
+              How It Works
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Natural Language Marketing: As Simple as Talking
             </h2>
@@ -223,115 +275,80 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 mb-2">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  Describe Your Product
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Tell our platform about your product, target audience, and
-                  marketing goals in plain language. No technical jargon
-                  required.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 mb-2">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  Generate Content
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Receive comprehensive, tailored marketing content with
-                  specific posts and strategies for your social networks.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 mb-2">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                    />
-                  </svg>
-                  Launch & Track
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Execute your marketing plan with step-by-step guidance and
-                  real-time performance tracking across social networks.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 mb-2">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                  Scale Success
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Automatically identify successful content and scale it through
-                  paid promotion and organic growth strategies.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+                title: "Describe Your Product",
+                description:
+                  "Tell our platform about your product, target audience, and marketing goals in plain language. No technical jargon required.",
+                step: "01",
+              },
+              {
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                title: "Generate Content",
+                description:
+                  "Receive comprehensive, tailored marketing content with specific posts and strategies for your social networks.",
+                step: "02",
+              },
+              {
+                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
+                title: "Launch & Track",
+                description:
+                  "Execute your marketing plan with step-by-step guidance and real-time performance tracking across social networks.",
+                step: "03",
+              },
+              {
+                icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+                title: "Scale Success",
+                description:
+                  "Automatically identify successful content and scale it through paid promotion and organic growth strategies.",
+                step: "04",
+              },
+            ].map((item, idx) => (
+              <Card
+                key={idx}
+                className="hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/20 group bg-background"
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
+                      <svg
+                        className="w-6 h-6 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={item.icon}
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-4xl font-bold text-muted-foreground/20">
+                      {item.step}
+                    </span>
+                  </div>
+                  <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                  <CardDescription className="text-base">
+                    {item.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Who Can Benefit Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-4">
+              For Everyone
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Who Can Benefit?
             </h2>
@@ -340,10 +357,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -365,17 +382,69 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Launch products quickly</li>
-                  <li>• Reach target audiences</li>
-                  <li>• Build brand awareness</li>
-                  <li>• Generate early customers</li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Launch products quickly
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Reach target audiences
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Build brand awareness
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Generate early customers
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -397,17 +466,69 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Expand online presence</li>
-                  <li>• Connect with customers</li>
-                  <li>• Promote products and services</li>
-                  <li>• Compete with larger brands</li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Expand online presence
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Connect with customers
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Promote products and services
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Compete with larger brands
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -429,10 +550,62 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Promote creative projects</li>
-                  <li>• Build an audience</li>
-                  <li>• Market digital products</li>
-                  <li>• Grow your brand</li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Promote creative projects
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Build an audience
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Market digital products
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Grow your brand
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -441,9 +614,12 @@ export default function Home() {
       </section>
 
       {/* Why Choose Our Platform Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-block px-3 py-1 rounded-full bg-muted text-sm font-medium mb-4">
+              Platform Benefits
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Why Choose Our Platform?
             </h2>
@@ -453,10 +629,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -485,9 +661,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -516,9 +692,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -547,9 +723,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -578,9 +754,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -608,9 +784,9 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/20 group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 transition-colors rounded-lg flex items-center justify-center mb-4">
                   <svg
                     className="w-6 h-6 text-primary"
                     fill="none"
@@ -643,26 +819,36 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
-            <CardContent className="py-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Turn Products into Customers?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Join hundreds of creators who&apos;ve transformed their
-                marketing approach with our platform. Create social media
-                marketing content with natural language—no marketing degree
-                required.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link href="/sign-up">Get Started</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-3xl blur-2xl opacity-50"></div>
+            <Card className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-primary/20 shadow-2xl">
+              <CardContent className="py-16 px-8">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-sm font-medium mb-6">
+                  Ready to Get Started?
+                </div>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                  Ready to Turn Products into Customers?
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  Join hundreds of creators who&apos;ve transformed their
+                  marketing approach with our platform. Create social media
+                  marketing content with natural language—no marketing degree
+                  required.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    size="lg"
+                    className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
+                    asChild
+                  >
+                    <Link href="/sign-up">Get Started</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 

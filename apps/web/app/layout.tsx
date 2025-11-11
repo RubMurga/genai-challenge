@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "AI Lab - Experiment with AI",
+  title: "Grammar - Experiment with AI",
   description:
     "Experiment with AI models and understand the impact of top_p and temperature parameters",
 }

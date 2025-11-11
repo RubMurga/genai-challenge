@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   Sidebar,
@@ -39,14 +40,14 @@ export default function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="flex items-center gap-2 px-2 py-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">
-              AI
-            </span>
-          </div>
-          <span className="text-xl font-bold">AI Lab</span>
-        </div>
+        <Link href="/" className="flex items-center px-2 py-2">
+          <Image
+            src="/logos/logo-dark.png"
+            alt="Grammar Logo"
+            width={32}
+            height={32}
+          />
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

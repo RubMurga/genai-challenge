@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
+import Image from "next/image"
 import { authClient } from "@/lib/auth"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -43,15 +44,17 @@ export default function SignIn() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">
-                AI
-              </span>
-            </div>
-            <span className="text-xl font-bold">AI Lab</span>
+          <div className="flex items-center justify-center mb-4">
+            <Link href="/">
+              <Image
+                src="/logos/logo-dark.png"
+                alt="Grammar Logo"
+                width={110}
+                height={100}
+              />
+            </Link>
           </div>
-          <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
+
           <p className="text-muted-foreground">
             Sign in to continue your AI experiments
           </p>

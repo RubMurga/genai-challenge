@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -14,16 +15,16 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       {/* Navigation */}
       <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">
-                AI
-              </span>
-            </div>
-            <span className="text-xl font-bold">AI Lab</span>
-          </div>
-          <div className="flex items-center space-x-2">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-center relative">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logos/logo-dark.png"
+              alt="Grammar Logo"
+              width={110}
+              height={100}
+            />
+          </Link>
+          <div className="flex items-center space-x-2 absolute right-4">
             <Button variant="outline" size="sm" asChild>
               <Link href="/sign-in">Sign In</Link>
             </Button>

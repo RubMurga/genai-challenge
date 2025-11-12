@@ -13,23 +13,15 @@ const onboardingRouter = new Hono<HonoEnv>()
   .use(authMiddleware)
   .post("/", createOnboardingValidator, async (c) => {
     const userId = c.get("user").id
-    const {
-      businessType,
-      platform,
-      adBudget,
-      productType,
-      mainGoal,
-      currentFollowers,
-    } = c.req.valid("json")
+    const { businessType, platform, adBudget, productType } =
+      c.req.valid("json")
 
     const onboarding = await createOnboarding(
       userId,
       businessType,
       platform,
       adBudget,
-      productType,
-      mainGoal,
-      currentFollowers
+      productType
     )
     await updateUserOnboardingCompleted(userId)
     return c.json(onboarding)

@@ -76,8 +76,8 @@ export const onboarding = pgTable("onboarding", {
   platform: text("platform").notNull(),
   adBudget: text("ad_budget").notNull(),
   productType: text("product_type").notNull(),
-  mainGoal: text("main_goal").notNull(),
-  currentFollowers: text("current_followers").notNull(),
+  mainGoal: text("main_goal"),
+  currentFollowers: text("current_followers"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()

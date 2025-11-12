@@ -7,9 +7,7 @@ export const createOnboarding = async (
   businessType: string,
   platform: string,
   adBudget: string,
-  productType: string,
-  mainGoal: string,
-  currentFollowers: string
+  productType: string
 ) => {
   return await db
     .insert(onboarding)
@@ -19,8 +17,6 @@ export const createOnboarding = async (
       platform,
       adBudget,
       productType,
-      mainGoal,
-      currentFollowers,
     })
     .returning()
 }

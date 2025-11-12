@@ -12,8 +12,6 @@ type OnboardingData = {
   platform?: "instagram" | "twitter" | "facebook" | "tiktok" | "linkedin"
   adBudget?: "0-100" | "100-500" | "500-1000" | "1000-5000" | "5000+"
   productType?: "app" | "platform" | "physical-product" | "service"
-  mainGoal?: "brand-awareness" | "sales" | "engagement" | "leads"
-  currentFollowers?: "0-1000" | "1000-10000" | "10000-100000" | "100000+"
 }
 
 export function OnboardingForm() {
@@ -79,28 +77,6 @@ export function OnboardingForm() {
         { value: "service", label: "Service" },
       ],
     },
-    {
-      id: "mainGoal",
-      title: "What's your main goal?",
-      description: "What do you want to achieve with your marketing?",
-      options: [
-        { value: "brand-awareness", label: "Brand Awareness" },
-        { value: "sales", label: "Sales" },
-        { value: "engagement", label: "Engagement" },
-        { value: "leads", label: "Leads" },
-      ],
-    },
-    {
-      id: "currentFollowers",
-      title: "How many followers do you currently have?",
-      description: "Help us understand your current reach",
-      options: [
-        { value: "0-1000", label: "0 - 1,000" },
-        { value: "1000-10000", label: "1,000 - 10,000" },
-        { value: "10000-100000", label: "10,000 - 100,000" },
-        { value: "100000+", label: "100,000+" },
-      ],
-    },
   ]
 
   const handleSelect = (stepId: string, value: string) => {
@@ -120,19 +96,9 @@ export function OnboardingForm() {
     formData.append("platform", data.platform!)
     formData.append("adBudget", data.adBudget!)
     formData.append("productType", data.productType!)
-    formData.append("mainGoal", data.mainGoal!)
-    formData.append("currentFollowers", data.currentFollowers!)
     startTransition(() => {
       action(formData)
     })
-  }
-
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1)
-    } else {
-      handleComplete()
-    }
   }
 
   const handleBack = () => {
@@ -270,7 +236,13 @@ export function OnboardingForm() {
               </div>
 
               {/* Navigation Buttons */}
-              <div className="flex items-center justify-between pt-4 border-t border-border">
+              <div
+                className={`flex items-center pt-4 border-t border-border ${
+                  currentStep === steps.length - 1
+                    ? "justify-between"
+                    : "justify-start"
+                }`}
+              >
                 <Button
                   variant="outline"
                   size="sm"
@@ -279,22 +251,16 @@ export function OnboardingForm() {
                 >
                   Back
                 </Button>
-                <Button
-                  size="sm"
-                  onClick={
-                    currentStep === steps.length - 1
-                      ? handleComplete
-                      : handleNext
-                  }
-                  disabled={!currentValue || isPending}
-                  className="min-w-[100px]"
-                >
-                  {isPending
-                    ? "Saving..."
-                    : currentStep === steps.length - 1
-                    ? "Complete"
-                    : "Next"}
-                </Button>
+                {currentStep === steps.length - 1 && (
+                  <Button
+                    size="sm"
+                    onClick={handleComplete}
+                    disabled={!currentValue || isPending}
+                    className="min-w-[100px]"
+                  >
+                    {isPending ? "Saving..." : "Complete"}
+                  </Button>
+                )}
               </div>
             </div>
           </section>

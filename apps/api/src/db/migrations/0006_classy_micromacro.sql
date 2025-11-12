@@ -5,8 +5,8 @@ CREATE TABLE "onboarding" (
 	"platform" text NOT NULL,
 	"ad_budget" text NOT NULL,
 	"product_type" text NOT NULL,
-	"main_goal" text NOT NULL,
-	"current_followers" text NOT NULL,
+	"main_goal" text,
+	"current_followers" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );

@@ -52,9 +52,6 @@ export default function Home() {
             <Button variant="outline" size="sm" asChild>
               <Link href="/sign-in">Sign In</Link>
             </Button>
-            <Button size="sm" asChild>
-              <Link href="/sign-up">Get Started</Link>
-            </Button>
           </div>
         </div>
       </nav>

@@ -39,7 +39,7 @@ export default function SignUp() {
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: `${window.location.origin}/questions`,
+      callbackURL: `${window.location.origin}/onboarding`,
     })
   }
 

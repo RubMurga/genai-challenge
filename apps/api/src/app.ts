@@ -1,6 +1,7 @@
 import { Hono } from "hono"
 import { auth } from "@/lib/auth"
 import { cors } from "hono/cors"
+import { onboardingRouter } from "./routes/onboarding.router"
 const app = new Hono()
 
   // configuring cors
@@ -26,6 +27,7 @@ const app = new Hono()
   .get("/", (c) => {
     return c.text("All Systems operational.")
   })
+  .route("/api/onboarding", onboardingRouter)
   .onError((err, c) => {
     console.error(err)
     return c.json({ error: "Internal server error" }, 500)

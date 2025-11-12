@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { useState, useActionState, startTransition, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
 import { CheckCircle2 } from "lucide-react"
 import { ScrollAnimation } from "@/components/scroll-animation"
+import { createOnboardingAction } from "./actions"
 
 type OnboardingData = {
   businessType?: "small-business" | "business" | "solopreneur"
@@ -19,6 +20,17 @@ export default function OnBoarding() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<OnboardingData>({})
+  const [state, action, isPending] = useActionState(createOnboardingAction, {
+    errors: {},
+    success: false,
+  })
+
+  // Handle success state
+  useEffect(() => {
+    if (state.success) {
+      router.push("/waitlist")
+    }
+  }, [state.success, router])
 
   const steps = [
     {
@@ -94,21 +106,25 @@ export default function OnBoarding() {
   const handleSelect = (stepId: string, value: string) => {
     setData((prev) => ({ ...prev, [stepId]: value }))
 
-    // Auto-advance to next step after a short delay
+    // Auto-advance to next step after a short delay (but don't submit on last step)
     setTimeout(() => {
       if (currentStep < steps.length - 1) {
         setCurrentStep(currentStep + 1)
-      } else {
-        handleComplete()
       }
     }, 300)
   }
 
   const handleComplete = () => {
-    // TODO: Save onboarding data to backend
-    console.log("Onboarding data:", data)
-    // Redirect to main app
-    router.push("/waitlist")
+    const formData = new FormData()
+    formData.append("businessType", data.businessType!)
+    formData.append("platform", data.platform!)
+    formData.append("adBudget", data.adBudget!)
+    formData.append("productType", data.productType!)
+    formData.append("mainGoal", data.mainGoal!)
+    formData.append("currentFollowers", data.currentFollowers!)
+    startTransition(() => {
+      action(formData)
+    })
   }
 
   const handleNext = () => {
@@ -201,6 +217,12 @@ export default function OnBoarding() {
                 </div>
               </ScrollAnimation>
 
+              {!state.success && Object.keys(state.errors).length > 0 && (
+                <div className="mb-4 p-3 rounded-md bg-destructive/10 border border-destructive/20 text-destructive text-sm text-center">
+                  {Object.values(state.errors).flat().join(", ")}
+                </div>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-5">
                 {currentStepData.options.map((option, idx) => {
                   const isSelected = currentValue === option.value
@@ -214,11 +236,12 @@ export default function OnBoarding() {
                         onClick={() =>
                           handleSelect(currentStepData.id, option.value)
                         }
+                        disabled={isPending}
                         className={`relative p-3 rounded-md border transition-all duration-200 group hover:scale-[1.01] w-full flex items-center justify-center ${
                           isSelected
                             ? "border-primary bg-primary/10 shadow-sm ring-1 ring-primary/20"
                             : "border-border bg-transparent hover:border-primary/50"
-                        }`}
+                        } ${isPending ? "opacity-50 cursor-not-allowed" : ""}`}
                       >
                         <div className="flex items-center justify-center gap-2">
                           <h3
@@ -252,17 +275,25 @@ export default function OnBoarding() {
                   variant="outline"
                   size="sm"
                   onClick={handleBack}
-                  disabled={currentStep === 0}
+                  disabled={currentStep === 0 || isPending}
                 >
                   Back
                 </Button>
                 <Button
                   size="sm"
-                  onClick={handleNext}
-                  disabled={!currentValue}
+                  onClick={
+                    currentStep === steps.length - 1
+                      ? handleComplete
+                      : handleNext
+                  }
+                  disabled={!currentValue || isPending}
                   className="min-w-[100px]"
                 >
-                  {currentStep === steps.length - 1 ? "Complete" : "Next"}
+                  {isPending
+                    ? "Saving..."
+                    : currentStep === steps.length - 1
+                    ? "Complete"
+                    : "Next"}
                 </Button>
               </div>
             </div>

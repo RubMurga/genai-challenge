@@ -2,7 +2,7 @@ import { hc } from "hono/client"
 import type { AppType } from "@grammar/api"
 import { getServerCookieHeaders } from "./auth-server"
 
-// Helper function to create authenticated client
+// Helper function to create authenticated client (server-side)
 const createAuthenticatedClient = async () => {
   const headers = await getServerCookieHeaders()
 
@@ -15,4 +15,29 @@ const createAuthenticatedClient = async () => {
       },
     },
   })
+}
+
+export const createOnboarding = async (
+  businessType: string,
+  platform: string,
+  adBudget: string,
+  productType: string,
+  mainGoal: string,
+  currentFollowers: string
+) => {
+  const client = await createAuthenticatedClient()
+  type OnboardingRequest = Parameters<
+    typeof client.api.onboarding.$post
+  >[0]["json"]
+  const response = await client.api.onboarding.$post({
+    json: {
+      businessType,
+      platform,
+      adBudget,
+      productType,
+      mainGoal,
+      currentFollowers,
+    } as OnboardingRequest,
+  })
+  return response.json()
 }

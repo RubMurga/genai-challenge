@@ -43,6 +43,13 @@
       "when": 1762840686068,
       "tag": "0005_lovely_cloak",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1762922724807,
+      "tag": "0006_polite_captain_flint",
+      "breakpoints": true
     }
   ]
 }

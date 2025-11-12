@@ -116,7 +116,8 @@ export default function Home() {
                   The Challenge
                 </div>
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                  Built Your Product.{" "}
+                  Built Your Product.
+                  <br />
                   <span className="text-primary">Now What?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">

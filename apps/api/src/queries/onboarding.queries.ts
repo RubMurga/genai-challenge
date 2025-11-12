@@ -1,6 +1,6 @@
 import { db } from "@/db"
 import { onboarding } from "@/db/schema"
-import { eq } from "drizzle-orm"
+import { count, eq } from "drizzle-orm"
 
 export const createOnboarding = async (
   userId: string,
@@ -27,4 +27,9 @@ export const createOnboarding = async (
 
 export const getOnboarding = async (userId: string) => {
   return await db.select().from(onboarding).where(eq(onboarding.userId, userId))
+}
+
+export const getOnboardingCount = async () => {
+  const result = await db.select({ count: count() }).from(onboarding)
+  return result[0]?.count || 0
 }

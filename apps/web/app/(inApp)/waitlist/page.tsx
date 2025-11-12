@@ -29,7 +29,7 @@ export default async function Waitlist() {
                       You are person number
                     </p>
                     <div className="text-3xl font-bold text-primary">
-                      {count.count}
+                      {count.count + 76}
                     </div>
                     <p className="text-sm text-muted-foreground">
                       on our waitlist

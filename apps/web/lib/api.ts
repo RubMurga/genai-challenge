@@ -41,3 +41,9 @@ export const createOnboarding = async (
   })
   return response.json()
 }
+
+export const getOnboarding = async () => {
+  const client = await createAuthenticatedClient()
+  const response = await client.api.onboarding.$get()
+  return response.json()
+}

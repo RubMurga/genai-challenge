@@ -30,5 +30,10 @@ const onboardingRouter = new Hono<HonoEnv>()
     await updateUserOnboardingCompleted(userId)
     return c.json(onboarding)
   })
+  .get("/", async (c) => {
+    const userId = c.get("user").id
+    const onboarding = await getOnboarding(userId)
+    return c.json(onboarding)
+  })
 
 export { onboardingRouter }
